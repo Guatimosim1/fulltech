@@ -1,16 +1,14 @@
 package com.capgemini.panteranegra.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "sessoes")
 public class Session {
     @Id
@@ -23,4 +21,6 @@ public class Session {
     @Column(columnDefinition = "varchar(5)", name = "horario_fim")
     private String endingTime;
 
+    @Column(columnDefinition = "varchar(255)", name = "nome_filme")
+    private String movieName;
 }
