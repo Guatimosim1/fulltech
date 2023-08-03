@@ -1,9 +1,20 @@
 package com.capgemini.panteranegra.services;
 
-import com.capgemini.panteranegra.models.SessionPostOutputDTO;
-
-import java.util.List;
+import com.capgemini.panteranegra.entities.Session;
+import com.capgemini.panteranegra.models.SessionPostInputDTO;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 public interface SessionService {
-    List<SessionPostOutputDTO> listAllSessions();
+    ModelAndView listAllSessions();
+
+    ModelAndView createSession();
+
+    String createSession(Model model, SessionPostInputDTO session);
+
+    ModelAndView updateSession(Long id);
+
+    String updateSession(Model model, Session session);
+
+    String deleteSession(Long id, Model model);
 }
