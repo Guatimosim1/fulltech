@@ -3,6 +3,8 @@ package com.capgemini.panteranegra.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 
 @Getter
 @Setter
@@ -23,4 +25,7 @@ public class Session {
 
     @Column(columnDefinition = "varchar(255)", name = "nome_filme")
     private String movieName;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "session")
+    private Set<Chair> chairs;
 }

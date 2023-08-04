@@ -18,11 +18,10 @@ public class Chair {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_sessao", nullable = false)
-    @JsonIgnore
     private Session session;
 
     @Column(columnDefinition = "varchar(255)", name = "nome_cliente")
     private String costumerName;
 
-    private Boolean status;
+    private Boolean status = false;
 }
