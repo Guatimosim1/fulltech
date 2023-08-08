@@ -20,6 +20,11 @@ public class SessionController {
         return sessionService.listAllSessions();
     }
 
+    @GetMapping("/{id}")
+    public ModelAndView findById(@PathVariable("id") Long id) {
+        return sessionService.findById(id);
+    }
+
     @GetMapping("/criar-sessao")
     public ModelAndView createSession() {
         return sessionService.createSession();

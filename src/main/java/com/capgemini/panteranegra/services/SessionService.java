@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 public interface SessionService {
     ModelAndView listAllSessions();
 
+    ModelAndView findById(Long id);
+
     ModelAndView createSession();
 
     String createSession(Model model, SessionPostInputDTO session);

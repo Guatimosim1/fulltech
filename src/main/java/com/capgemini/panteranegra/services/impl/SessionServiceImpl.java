@@ -35,6 +35,16 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
+    public ModelAndView findById(Long id) {
+        try {
+            Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException(String.format("Sessão com id %s não foi encontrada", id), HttpStatus.NOT_FOUND));
+            return new ModelAndView("sessao", "sessao", session);
+        } catch (PanteraException exception) {
+            return new ModelAndView("erro", "exception", exception);
+        }
+    }
+
+    @Override
     public ModelAndView createSession() {
         try{
             return new ModelAndView("criarSessao");
