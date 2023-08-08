@@ -4,11 +4,15 @@ import com.capgemini.panteranegra.entities.Session;
 import com.capgemini.panteranegra.models.SessionPostInputDTO;
 import com.capgemini.panteranegra.services.SessionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/sessoes")
 public class SessionController {
