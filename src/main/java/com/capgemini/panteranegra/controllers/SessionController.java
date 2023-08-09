@@ -4,6 +4,7 @@ import com.capgemini.panteranegra.entities.Session;
 import com.capgemini.panteranegra.models.SessionPostInputDTO;
 import com.capgemini.panteranegra.services.SessionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/sessoes")
 public class SessionController {
 
+    @Autowired
     private final SessionService sessionService;
 
     @GetMapping
