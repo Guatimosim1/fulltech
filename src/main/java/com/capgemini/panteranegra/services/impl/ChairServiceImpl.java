@@ -37,7 +37,7 @@ public class ChairServiceImpl implements ChairService {
     @Override
     public ModelAndView findByCustomerName(String nomeCliente) {
         try {
-            Chair chair = repository.findByCostomerName(nomeCliente).orElseThrow(() -> new PanteraException(String.format("Não existem cadeiras assinaladas para o cliente: %s", nomeCliente), HttpStatus.NOT_FOUND));
+            Chair chair = repository.findByCostumerName(nomeCliente).orElseThrow(() -> new PanteraException(String.format("Não existem cadeiras assinaladas para o cliente: %s", nomeCliente), HttpStatus.NOT_FOUND));
             return new ModelAndView("cadeira", "chair", chair);
         } catch (PanteraException exception) {
             return new ModelAndView("erro", "exception", exception);
