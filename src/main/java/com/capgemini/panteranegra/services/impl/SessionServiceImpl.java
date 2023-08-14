@@ -29,19 +29,15 @@ public class SessionServiceImpl implements SessionService {
             List<SessionPostOutputDTO> retorno = sessionRepository.findAll().stream().map(projectMapper::sessionEntityToPostOutputDto).toList();
             return new ModelAndView("listaSessao", "sessionList", retorno);
         } catch (Exception e) {
-            return new ModelAndView("erro", "msg_erro", e.getMessage());
+            throw new PanteraException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
 
     @Override
     public ModelAndView findById(Long id) {
-        try {
-            Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException(String.format("Sessão com id %s não foi encontrada", id), HttpStatus.NOT_FOUND));
-            return new ModelAndView("sessao", "sessao", session);
-        } catch (PanteraException exception) {
-            return new ModelAndView("erro", "exception", exception);
-        }
+        Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException(String.format("Sessão com id %s não foi encontrada", id), HttpStatus.NOT_FOUND));
+        return new ModelAndView("sessao", "sessao", session);
     }
 
     @Override
@@ -49,18 +45,17 @@ public class SessionServiceImpl implements SessionService {
         try{
             return new ModelAndView("criarSessao");
         } catch (Exception exception) {
-            return new ModelAndView("erro", "msg_erro", exception.getMessage());
+            throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Override
-    public String createSession(Model model, SessionPostInputDTO session) {
+    public String createSession(SessionPostInputDTO session) {
         try{
             sessionRepository.save(SessionFactory.toEntity(session));
             return "redirect:listaSessao";
         } catch (Exception exception) {
-            model.addAttribute("msg_erro", exception.getMessage());
-            return "erro";
+            throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -69,30 +64,25 @@ public class SessionServiceImpl implements SessionService {
         try{
             Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException("Sessão com id " + id + "não foi encontrada", HttpStatus.NOT_FOUND));
             return new ModelAndView("atualizarSessao", "sessao", session);
-        } catch (PanteraException exception) {
-            return new ModelAndView("erro", "exception", exception);
+        } catch (Exception exception) {
+            throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Override
-    public String updateSession(Model model, Session session) {
+    public String updateSession(Session session) {
         try{
             sessionRepository.save(session);
             return "redirect:listaSessao";
         } catch (Exception exception) {
-            model.addAttribute("msg_erro", exception.getMessage());
-            return "erro";
+            throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @Override
-    public String deleteSession(Long id, Model model) {
-        try{
-            Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException("A sessão com id " + id + " não foi encontrada", HttpStatus.NOT_FOUND));
-            sessionRepository.delete(session);
-        } catch (PanteraException exception) {
-            model.addAttribute("exception", exception);
-        }
+    public String deleteSession(Long id) {
+        Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException("A sessão com id " + id + " não foi encontrada", HttpStatus.NOT_FOUND));
+        sessionRepository.delete(session);
         return "redirect:listaSessao";
     }
 }

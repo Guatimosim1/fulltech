@@ -37,8 +37,8 @@ public class SessionController {
     }
 
     @PostMapping("/criar-sessao")
-    public String createSession(Model model, SessionPostInputDTO session) {
-        return sessionService.createSession(model, session);
+    public String createSession(SessionPostInputDTO session) {
+        return sessionService.createSession(session);
     }
 
     @GetMapping("/atualizar/{id}")
@@ -47,13 +47,13 @@ public class SessionController {
     }
 
     @PostMapping("/atualizar")
-    public String updateSession(Model model, Session session) {
-        return sessionService.updateSession(model, session);
+    public String updateSession(Session session) {
+        return sessionService.updateSession(session);
     }
 
     @GetMapping("/deletar/{id}")
-    public String deleteSession(@PathVariable("id") Long id, Model model) {
-        return sessionService.deleteSession(id, model);
+    public String deleteSession(@PathVariable("id") Long id) {
+        return sessionService.deleteSession(id);
     }
 
 }

@@ -12,11 +12,11 @@ public interface SessionService {
 
     ModelAndView createSession();
 
-    String createSession(Model model, SessionPostInputDTO session);
+    String createSession(SessionPostInputDTO session);
 
     ModelAndView updateSession(Long id);
 
-    String updateSession(Model model, Session session);
+    String updateSession(Session session);
 
-    String deleteSession(Long id, Model model);
+    String deleteSession(Long id);
 }
