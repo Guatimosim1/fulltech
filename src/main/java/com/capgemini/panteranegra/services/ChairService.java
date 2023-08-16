@@ -4,7 +4,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface ChairService {
     ModelAndView findById(Long id);
-    ModelAndView findAll();
+    ModelAndView findBySession(Long idSessao);
     ModelAndView findByCustomerName(String nomeCliente);
     ModelAndView assignChairToCustomer(Long id, String nomeCliente);
 }

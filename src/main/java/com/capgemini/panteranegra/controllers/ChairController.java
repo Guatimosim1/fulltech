@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/api/chair")
+@RequestMapping(value = "/cadeiras")
 public class ChairController {
     @Autowired
     private ChairService service;
@@ -18,9 +18,9 @@ public class ChairController {
         return service.findById(id);
     }
 
-    @GetMapping("")
-    public ModelAndView findAll() {
-        return service.findAll();
+    @GetMapping("/list/{idSessao}")
+    public ModelAndView findBySession(@PathVariable("idSessao") Long idSessao) {
+        return service.findBySession(idSessao);
     }
 
     @PostMapping("")

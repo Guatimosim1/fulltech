@@ -27,7 +27,7 @@ public class SessionServiceImpl implements SessionService {
     public ModelAndView listAllSessions() {
         try {
             List<SessionPostOutputDTO> retorno = sessionRepository.findAll().stream().map(projectMapper::sessionEntityToPostOutputDto).toList();
-            return new ModelAndView("listaSessao", "sessionList", retorno);
+            return new ModelAndView("session/listaSessao", "sessionList", retorno);
         } catch (Exception e) {
             throw new PanteraException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
