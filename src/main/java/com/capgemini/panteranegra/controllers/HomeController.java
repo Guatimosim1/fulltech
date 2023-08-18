@@ -14,6 +14,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public ModelAndView iniciar() {
+		ModelAndView model = new ModelAndView();
 		return service.listAllSessions();
 	}
 	

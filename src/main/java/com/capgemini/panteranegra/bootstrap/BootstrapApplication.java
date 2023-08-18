@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class BootstrapApplication implements CommandLineRunner {
 
