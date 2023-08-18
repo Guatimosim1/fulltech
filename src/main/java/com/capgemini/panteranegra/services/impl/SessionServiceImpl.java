@@ -43,7 +43,7 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public ModelAndView createSession() {
         try{
-            return new ModelAndView("criarSessao");
+            return new ModelAndView("session/criarSessao");
         } catch (Exception exception) {
             throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
