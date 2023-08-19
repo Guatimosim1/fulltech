@@ -14,11 +14,13 @@ public final class SessionFactory {
         for(int i=0; i<30; i++) {
             chairs.add(new Chair());
         }
-        return new Session().builder()
+        Session session = new Session().builder()
                 .movieName(request.getMovieName())
                 .startingTime(request.getStartingTime())
                 .endingTime(request.getEndingTime())
-                .chairs(chairs)
                 .build();
+        chairs.stream().forEach(chair -> chair.setSession(session));
+        session.setChairs(chairs);
+        return session;
     }
 }

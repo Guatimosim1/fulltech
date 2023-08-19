@@ -11,7 +11,6 @@ import com.capgemini.panteranegra.services.SessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -50,11 +49,13 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public String createSession(SessionPostInputDTO session) {
+    public ModelAndView createSession(SessionPostInputDTO session) {
         try{
             sessionRepository.save(SessionFactory.toEntity(session));
-            return "redirect:listaSessao";
+            System.out.println("Foi salvo");
+            return new ModelAndView("session/listaSessao");
         } catch (Exception exception) {
+            exception.printStackTrace();
             throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

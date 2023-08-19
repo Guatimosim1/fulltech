@@ -37,7 +37,7 @@ public class SessionController {
     }
 
     @PostMapping("/criar-sessao")
-    public String createSession(SessionPostInputDTO session) {
+    public ModelAndView createSession(SessionPostInputDTO session) {
         return sessionService.createSession(session);
     }
 
