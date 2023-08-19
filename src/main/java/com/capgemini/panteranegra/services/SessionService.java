@@ -2,7 +2,6 @@ package com.capgemini.panteranegra.services;
 
 import com.capgemini.panteranegra.entities.Session;
 import com.capgemini.panteranegra.models.SessionPostInputDTO;
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface SessionService {
@@ -12,7 +11,7 @@ public interface SessionService {
 
     ModelAndView createSession();
 
-    String createSession(SessionPostInputDTO session);
+    ModelAndView createSession(SessionPostInputDTO session);
 
     ModelAndView updateSession(Long id);
 

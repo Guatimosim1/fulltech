@@ -14,7 +14,7 @@ public class PanteraException extends RuntimeException {
     public PanteraException(String msg, HttpStatus statusCode) {
         super(msg);
         this.statusCode = statusCode;
-        this.timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
     }
 
     public HttpStatus getStatusCode() {return this.statusCode;}
