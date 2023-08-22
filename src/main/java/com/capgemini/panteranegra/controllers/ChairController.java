@@ -29,7 +29,7 @@ public class ChairController {
     }
 
     @GetMapping("/assign/{id}")
-    public ModelAndView assignChairToCustomer(@PathVariable("id") Long id, @RequestBody CustumerNameInputDTO cliente) {
+    public ModelAndView assignChairToCustomer(@PathVariable("id") Long id, CustumerNameInputDTO cliente) {
         return service.assignChairToCustomer(id, cliente.getNomeCliente());
     }
 }

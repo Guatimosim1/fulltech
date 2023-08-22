@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Getter
@@ -28,4 +29,9 @@ public class Session {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "session")
     private Set<Chair> chairs;
+
+    public Session ordenarCadeiras() {
+        this.chairs = this.chairs.stream().sorted().collect(Collectors.toSet());
+        return this;
+    }
 }
