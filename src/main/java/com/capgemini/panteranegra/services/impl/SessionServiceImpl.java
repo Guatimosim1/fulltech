@@ -36,7 +36,7 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public ModelAndView findById(Long id) {
         Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException(String.format("Sessão com id %s não foi encontrada", id), HttpStatus.NOT_FOUND));
-        return new ModelAndView("sessao", "sessao", session);
+        return new ModelAndView("session/sessao", "sessao", session);
     }
 
     @Override
@@ -49,13 +49,11 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public ModelAndView createSession(SessionPostInputDTO session) {
+    public String createSession(SessionPostInputDTO session) {
         try{
             sessionRepository.save(SessionFactory.toEntity(session));
-            System.out.println("Foi salvo");
-            return new ModelAndView("session/listaSessao");
+            return "redirect:/sessoes";
         } catch (Exception exception) {
-            exception.printStackTrace();
             throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
