@@ -7,13 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Criar Sessão</title>
+    <style>
+        .conteudo {
+            margin: auto;
+            margin-top: 50px;
+            max-width: 500px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .borda {
+            border: 1px solid black;
+            border-radius: 3px;
+            box-shadow: 5px 5px black;
+        }
+        .margem {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+        label {
+            margin-top: 2px;
+        }
+
+    </style>
 </head>
 <body>
-    <form action="/sessoes/criar-sessao" method="post">
-        <input type="text" name="movieName" placeholder="Nome do Filme"> <br>
-        <input type="text" name="startingTime" placeholder="Hora de Início"> <br>
-        <input type="text" name="endingTime" placeholder="Hora de Término">
-        <input type="submit" class="btn btn-primary">
-    </form>
+    <div class="conteudo borda">
+        <form action="/sessoes/criar-sessao" method="post">
+            <h2>Fomulário de Inserção de Sessão</h2> <br>
+            <label>Digite o nome do Filme:</label>
+            <input type="text" name="movieName" placeholder="Ex: Star Wars VI - Uma Nova Esperança" size="50"> <br>
+            <label>Digite a hora de início:</label> <input type="time" name="startingTime"> <br>
+            <label>Digite a hora de início:</label> <input type="time" name="endingTime" placeholder="Hora de Término"> <br>
+            <div class="conteudo margem">
+                <a href="/" class="btn btn-primary">&#10554; Voltar</a>
+                <input type="submit" class="btn btn-dark" value="Salvar Sessão">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

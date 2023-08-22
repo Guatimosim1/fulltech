@@ -11,7 +11,7 @@ public interface SessionService {
 
     ModelAndView createSession();
 
-    ModelAndView createSession(SessionPostInputDTO session);
+    String createSession(SessionPostInputDTO session);
 
     ModelAndView updateSession(Long id);
 

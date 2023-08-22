@@ -20,6 +20,13 @@
 				text-decoration: none;
 				color: white;
 			}
+			.bloco-acoes {
+				text-align: center;
+			}
+			.borda-preta {
+				border: 1px solid black;
+				border-radius: 5px;
+			}
 		</style>
 	</head>
 	<body>
@@ -37,12 +44,19 @@
 			<h1 class="text-center">Bem-vindos(as) ao Cinema Pantera</h1>
 		</div>
 
-		<c:set var="contador" value="${0}"/>
+		<c:set var="contador" value="${1}"/>
 		<c:forEach var="sessao" items="${sessionList}">
 			<c:set var="contador" value="${contador+1}"/>
-			<div class="card float" style="width: 18rem;">
-				<img class="card-img-top" src="https://img.freepik.com/vetores-gratis/fundo-monocromatico-do-padrao-quadrado-ilustracao-vetorial-geometrica_1164-1143.jpg" alt="">
+			<div class="card float borda-preta" style="width: 18rem;">
+				<img class="card-img-top" src="https://img.freepik.com/fotos-gratis/fundo-abstrato-preto-escuro-com-lascas-de-madeira_24972-208.jpg" alt="">
 				<div class="card-body">
+					<div class="bloco-acoes">
+						<a href="/sessoes/${sessao.id}" class="btn btn-success" title="Visualizar Cadeiras Disponíveis">
+							<span style="font-family: 'Courier New', Courier, monospace;">&#128065;</span>
+						</a>
+						<a href="" class="btn btn-warning" title="Editar Sessão">&#9998;</a>
+						<a href="" class="btn btn-danger" title="Remover Sessão">&#x2715;</a>
+					</div>
 					<h5 class="card-title">${sessao.movieName}</h5>
 					<p>Hora de Início: ${sessao.startingTime}</p>
 					<p>Hora de Término: ${sessao.endingTime}</p>
