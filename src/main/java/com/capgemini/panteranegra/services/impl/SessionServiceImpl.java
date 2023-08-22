@@ -62,7 +62,7 @@ public class SessionServiceImpl implements SessionService {
     public ModelAndView updateSession(Long id) {
         try{
             Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException("Sessão com id " + id + "não foi encontrada", HttpStatus.NOT_FOUND));
-            return new ModelAndView("atualizarSessao", "sessao", session);
+            return new ModelAndView("session/atualizarSessao", "sessao", session);
         } catch (Exception exception) {
             throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -72,7 +72,7 @@ public class SessionServiceImpl implements SessionService {
     public String updateSession(Session session) {
         try{
             sessionRepository.save(session);
-            return "redirect:listaSessao";
+            return "redirect:/sessoes";
         } catch (Exception exception) {
             throw new PanteraException(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

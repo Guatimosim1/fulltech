@@ -25,7 +25,7 @@ public class ChairServiceImpl implements ChairService {
     public ModelAndView findById(Long id) {
         try {
             Chair chair = chairRepository.findById(id).orElseThrow(() -> new PanteraException(String.format("Cadeira com id %d não foi encontrada", id), HttpStatus.NOT_FOUND));
-            return new ModelAndView("cadeira", "chair", chair);
+            return new ModelAndView("chair/cadeira", "chair", chair);
         } catch (PanteraException exception) {
             return new ModelAndView("erro", "exception", exception);
         }
@@ -55,7 +55,7 @@ public class ChairServiceImpl implements ChairService {
             if(chair.getStatus()) throw new PanteraException("Esta cadeira já está assinalada a outro cliente", HttpStatus.BAD_REQUEST);
             chair.setCostumerName(nomeCliente); chair.setStatus(true);
             Chair saved = chairRepository.save(chair);
-            return new ModelAndView("cadeira", "chair", saved);
+            return new ModelAndView("session/sessao", "sessao", saved.getSession());
         } catch (PanteraException exception) {
             return new ModelAndView("erro", "exception", exception);
         }

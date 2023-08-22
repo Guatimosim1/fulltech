@@ -54,7 +54,7 @@
 						<a href="/sessoes/${sessao.id}" class="btn btn-success" title="Visualizar Cadeiras Disponíveis">
 							<span style="font-family: 'Courier New', Courier, monospace;">&#128065;</span>
 						</a>
-						<a href="" class="btn btn-warning" title="Editar Sessão">&#9998;</a>
+						<a href="/sessoes/atualizar/${sessao.id}" class="btn btn-warning" title="Editar Sessão">&#9998;</a>
 						<a href="" class="btn btn-danger" title="Remover Sessão">&#x2715;</a>
 					</div>
 					<h5 class="card-title">${sessao.movieName}</h5>
