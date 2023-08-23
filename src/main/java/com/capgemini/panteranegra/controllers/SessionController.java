@@ -55,4 +55,7 @@ public class SessionController {
         return sessionService.deleteSession(id);
     }
 
+    @GetMapping("/deletar/showJSP/{id}")
+    public ModelAndView showJSPtoDelete(@PathVariable("id") Long id) {return sessionService.showJSPtoDelete(id);}
+
 }

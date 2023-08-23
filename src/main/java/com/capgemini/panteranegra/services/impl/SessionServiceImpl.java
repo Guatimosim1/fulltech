@@ -1,5 +1,6 @@
 package com.capgemini.panteranegra.services.impl;
 
+import com.capgemini.panteranegra.entities.Chair;
 import com.capgemini.panteranegra.entities.Session;
 import com.capgemini.panteranegra.exceptions.PanteraException;
 import com.capgemini.panteranegra.factory.SessionFactory;
@@ -71,6 +72,13 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public String updateSession(Session session) {
         try{
+            List<Chair> chairs = sessionRepository
+                    .findById(session.getId())
+                    .orElseThrow(() -> new PanteraException("Sessão com id"+session.getId()+"não foi encontrado", HttpStatus.NOT_FOUND))
+                    .getChairs();
+
+            session.setChairs(chairs);
+
             sessionRepository.save(session);
             return "redirect:/sessoes";
         } catch (Exception exception) {
@@ -82,6 +90,12 @@ public class SessionServiceImpl implements SessionService {
     public String deleteSession(Long id) {
         Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException("A sessão com id " + id + " não foi encontrada", HttpStatus.NOT_FOUND));
         sessionRepository.delete(session);
-        return "redirect:listaSessao";
+        return "redirect:/sessoes";
+    }
+
+    @Override
+    public ModelAndView showJSPtoDelete(Long id) {
+        Session session = sessionRepository.findById(id).orElseThrow(() -> new PanteraException("A sessão com id " + id + " não foi encontrada", HttpStatus.NOT_FOUND));
+        return new ModelAndView("session/deletar", "sessao", session);
     }
 }

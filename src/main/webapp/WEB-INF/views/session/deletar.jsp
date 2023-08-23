@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadeira</title>
+    <c:set var="sessao" value="${sessao}"/>
+    <title>Deletar - ${sessao}</title>
     <style>
         .conteudo {
             margin: auto;
@@ -27,25 +28,17 @@
     </style>
 </head>
 <body>
-    <c:set var="cadeira" value="${chair}"/>
     <div class="conteudo borda">
-        <c:if test="${!cadeira.status}">
-            <form action="/cadeiras/assign/${cadeira.id}" method="get">
-                Esta cadeira está disponível. Digite o nome do cliente que deseja assinalar:
-                <div style="padding: 5px;">
-                    <input type="text" name="nomeCliente">
-                    <input class="btn btn-dark" type="submit" value="Assinalar">
-                    <a href="/sessoes/${cadeira.session.id}" class="btn btn-primary">&#10554; Voltar</a>
-                </div>
-            </form>
-        </c:if>
-        <c:if test="${cadeira.status}">
-            Desculpe. Esta cadeira já foi assinalada para o cliente ${cadeira.costumerName}
+        <form action="/sessoes/deletar/${sessao.id}">
             <div style="padding: 5px;">
-                <a href="/sessoes/${cadeira.session.id}" class="btn btn-primary">&#10554; Voltar</a>
+                Tem certeza que deseja deletar a Sessão "${sessao.movieName}" que começa às
+                ${sessao.startingTime}hr e termina às ${sessao.endingTime}hr?
             </div>
-        </c:if>
-        <br>
+            <div style="padding: 5px;">
+                <input type="submit" class="btn btn-dark" value="Sim, quero deletar">
+                <a href="/sessoes" class="btn btn-primary">&#10554; Voltar</a>
+            </div>
+        </form>
     </div>
 </body>
 </html>

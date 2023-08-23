@@ -18,4 +18,6 @@ public interface SessionService {
     String updateSession(Session session);
 
     String deleteSession(Long id);
+
+    ModelAndView showJSPtoDelete(Long id);
 }
