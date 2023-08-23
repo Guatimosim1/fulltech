@@ -3,8 +3,7 @@ package com.capgemini.panteranegra.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 
 @Getter
@@ -28,10 +27,6 @@ public class Session {
     private String movieName;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "session")
-    private Set<Chair> chairs;
+    private List<Chair> chairs;
 
-    public Session ordenarCadeiras() {
-        this.chairs = this.chairs.stream().sorted().collect(Collectors.toSet());
-        return this;
-    }
 }

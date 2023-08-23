@@ -2,7 +2,7 @@ package com.capgemini.panteranegra.models;
 
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,5 +14,5 @@ public class SessionResponseDTO {
     private String startingTime;
     private String endingTime;
     private String movieName;
-    private Set<ChairOutputDTO> chairs;
+    private List<ChairOutputDTO> chairs;
 }

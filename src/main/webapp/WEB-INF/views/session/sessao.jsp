@@ -22,6 +22,10 @@
             margin: 10px;
             display: inline-block;
         }
+        a {
+            color: white;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -44,7 +48,12 @@
         <c:set var="contador" value="${1}"/>
         <c:forEach var="cadeira" items="${sessao.getChairs()}">
             <a href="/cadeiras/${cadeira.id}">
-                <div class="square">${contador}</div>
+                <c:if test="${cadeira.status}">
+                    <div class="square" style="background-color: red;">${contador}</div>
+                </c:if>
+                <c:if test="${!cadeira.status}">
+                    <div class="square" style="background-color: greenyellow;">${contador}</div>
+                </c:if>
             </a>
             <c:if test="${contador % 5 == 0}">
                 <br>
