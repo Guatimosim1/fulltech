@@ -1,6 +1,6 @@
 package com.capgemini.panteranegra.controllers;
 
-import com.capgemini.panteranegra.models.CustumerNameInputDTO;
+import com.capgemini.panteranegra.models.CustomerNameInputDTO;
 import com.capgemini.panteranegra.services.ChairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,12 +24,12 @@ public class ChairController {
     }
 
     @PostMapping("")
-    public ModelAndView findByCustumerName(@RequestBody CustumerNameInputDTO cliente) {
+    public ModelAndView findByCustumerName(@RequestBody CustomerNameInputDTO cliente) {
         return service.findByCustomerName(cliente.getNomeCliente());
     }
 
     @GetMapping("/assign/{id}")
-    public ModelAndView assignChairToCustomer(@PathVariable("id") Long id, CustumerNameInputDTO cliente) {
+    public ModelAndView assignChairToCustomer(@PathVariable("id") Long id, CustomerNameInputDTO cliente) {
         return service.assignChairToCustomer(id, cliente.getNomeCliente());
     }
 }
