@@ -20,11 +20,13 @@ public class SessionRestController {
         return service.findById(id);
     }
 
+    @CrossOrigin
     @GetMapping
     public List<Session> findAll() {
         return service.findAll();
     }
 
+    @CrossOrigin
     @PostMapping
     public Session create(@RequestBody SessionPostInputDTO session) {
         return service.create(session);
