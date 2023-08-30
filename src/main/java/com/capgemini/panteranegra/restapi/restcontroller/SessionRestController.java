@@ -15,6 +15,9 @@ public class SessionRestController {
     @Autowired
     private SessionRestService service;
 
+    public static int count = 0;
+
+    @CrossOrigin
     @GetMapping("/{id}")
     public Session findById(@PathVariable("id") Long id) {
         return service.findById(id);
@@ -23,6 +26,7 @@ public class SessionRestController {
     @CrossOrigin
     @GetMapping
     public List<Session> findAll() {
+        System.out.println(++count);
         return service.findAll();
     }
 
@@ -32,11 +36,13 @@ public class SessionRestController {
         return service.create(session);
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public Session update(@RequestBody SessionPostInputDTO session, @PathVariable("id") Long id) {
         return service.update(session, id);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
         service.delete(id);
