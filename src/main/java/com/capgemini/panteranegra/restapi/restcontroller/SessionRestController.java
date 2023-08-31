@@ -15,8 +15,6 @@ public class SessionRestController {
     @Autowired
     private SessionRestService service;
 
-    public static int count = 0;
-
     @CrossOrigin
     @GetMapping("/{id}")
     public Session findById(@PathVariable("id") Long id) {
@@ -26,7 +24,6 @@ public class SessionRestController {
     @CrossOrigin
     @GetMapping
     public List<Session> findAll() {
-        System.out.println(++count);
         return service.findAll();
     }
 
