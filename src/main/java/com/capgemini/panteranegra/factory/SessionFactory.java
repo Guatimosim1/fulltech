@@ -19,6 +19,7 @@ public final class SessionFactory {
                 .movieName(request.getMovieName())
                 .startingTime(request.getStartingTime())
                 .endingTime(request.getEndingTime())
+                .image(request.getImage())
                 .build();
         chairs.stream().forEach(chair -> chair.setSession(session));
         session.setChairs(chairs);
@@ -31,6 +32,7 @@ public final class SessionFactory {
                 .movieName(session.getMovieName())
                 .startingTime(session.getStartingTime())
                 .endingTime(session.getEndingTime())
+                .image(session.getImage())
                 .chairs(ChairFactory.toOutputDTO(session.getChairs()))
                 .build();
 

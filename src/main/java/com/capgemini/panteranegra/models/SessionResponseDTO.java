@@ -14,5 +14,6 @@ public class SessionResponseDTO {
     private String startingTime;
     private String endingTime;
     private String movieName;
+    private String image;
     private List<ChairOutputDTO> chairs;
 }

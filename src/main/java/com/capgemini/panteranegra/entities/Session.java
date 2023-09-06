@@ -29,6 +29,9 @@ public class Session {
     @Column(columnDefinition = "varchar(255)", name = "nome_filme")
     private String movieName;
 
+    @Column(columnDefinition = "TEXT")
+    private String image;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "session")
     private List<Chair> chairs;

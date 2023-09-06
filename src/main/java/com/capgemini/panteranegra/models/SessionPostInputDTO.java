@@ -12,4 +12,5 @@ public class SessionPostInputDTO {
     private String startingTime;
     private String endingTime;
     private String movieName;
+    private String image;
 }
