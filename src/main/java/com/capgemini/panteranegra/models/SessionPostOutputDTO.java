@@ -13,4 +13,5 @@ public class SessionPostOutputDTO {
     private String startingTime;
     private String endingTime;
     private String movieName;
+    private byte[] image;
 }
